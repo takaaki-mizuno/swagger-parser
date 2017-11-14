@@ -17,13 +17,13 @@ class Base
     const TYPE_HASH    = 'hash';
     const TYPE_BOOLEAN = 'boolean';
 
+    protected static $name   = '';
+
     protected $fields = [];
 
     protected $data   = [];
 
     protected $path   = '';
-
-    protected static $name   = '';
 
     public function __construct(array $data, string $path)
     {
@@ -47,6 +47,14 @@ class Base
         }
     }
 
+    public static function getName()
+    {
+        $name      = static::class;
+        $fragments = explode('\\', $name);
+
+        return $fragments[count($fragments) - 1];
+    }
+
     public function __get($name)
     {
         if (array_key_exists($name, $this->data)) {
@@ -56,16 +64,15 @@ class Base
         return null;
     }
 
+    public function get($name)
+    {
+        if (array_key_exists($name, $this->data)) {
+            return $this->data[$name];
+        }
+    }
+
     protected function validate($key, $value)
     {
         return true;
-    }
-
-    public static function getName()
-    {
-        $name       = static::class;
-        $fragments  = explode('\\', $name);
-
-        return $fragments[count($fragments) - 1];
     }
 }
