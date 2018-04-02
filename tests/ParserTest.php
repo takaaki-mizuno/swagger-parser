@@ -16,8 +16,8 @@ class ParserTest extends Base
     public function testGetPaths()
     {
         $parser = new Parser();
-        $doc    = $parser->parseFile(__DIR__.'/data/petshop.yaml');
-
+        $doc    = $parser->parseFile(__DIR__.'/data/sampleapi.yaml');
+		print_r($doc);
         $paths = $doc->paths;
         $this->assertNotEmpty($paths);
         foreach ($paths as $name => $path) {

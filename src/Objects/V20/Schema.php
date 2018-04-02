@@ -9,9 +9,10 @@ class Schema extends Base
 
     protected $fields = [
         'allOf' => [
-            Base::KEY_TYPE      => Base::TYPE_STRING,
-            Base::KEY_REQUIRED  => true,
+            Base::KEY_TYPE      => Base::ARRAY,
+            Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
+            Base::KEY_ITEM_TYPE => AllOf::class,
         ],
         'type' => [
             Base::KEY_TYPE      => Base::TYPE_STRING,

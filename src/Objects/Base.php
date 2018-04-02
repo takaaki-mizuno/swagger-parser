@@ -25,6 +25,14 @@ class Base
 
     protected $path   = '';
 
+    /**
+     * Base constructor.
+     *
+     * @param array  $data
+     * @param string $path
+     *
+     * @throws \TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException
+     */
     public function __construct(array $data, string $path)
     {
         $this->path = $path;
@@ -47,7 +55,7 @@ class Base
         }
     }
 
-    public static function getName()
+    public static function getName(): string
     {
         $name      = static::class;
         $fragments = explode('\\', $name);
