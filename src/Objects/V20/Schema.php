@@ -9,7 +9,7 @@ class Schema extends Base
 
     protected $fields = [
         'allOf' => [
-            Base::KEY_TYPE      => Base::ARRAY,
+            Base::KEY_TYPE      => Base::TYPE_ARRAY,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
             Base::KEY_ITEM_TYPE => AllOf::class,
@@ -29,7 +29,7 @@ class Schema extends Base
             Base::KEY_TYPE      => Base::TYPE_HASH,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
-            Base::KEY_ITEM_TYPE => Parameter::class,
+            Base::KEY_ITEM_TYPE => Property::class,
         ],
     ];
 }

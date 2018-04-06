@@ -25,7 +25,7 @@ class Parser
             $version = $this->detectOpenAPIVersion($rawData);
             switch ($version) {
                 case '20':
-                    return new \TakaakiMizuno\SwaggerParser\Objects\V20\Document($rawData, '');
+                    return new \TakaakiMizuno\SwaggerParser\Objects\V20\Document($rawData, 'Document');
             }
         }
 

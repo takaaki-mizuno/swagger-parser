@@ -23,7 +23,7 @@ class AllOf extends Base
             Base::KEY_TYPE      => Base::TYPE_HASH,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
-            Base::KEY_ITEM_TYPE => Parameter::class,
+            Base::KEY_ITEM_TYPE => Property::class,
         ],
     ];
 }
