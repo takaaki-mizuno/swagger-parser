@@ -33,5 +33,10 @@ class Property extends Base
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
         ],
+        'items' => [
+            Base::KEY_TYPE      => self::class,
+            Base::KEY_REQUIRED  => false,
+            Base::KEY_IS_OBJECT => true,
+        ],
     ];
 }
