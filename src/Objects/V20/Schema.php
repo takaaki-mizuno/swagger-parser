@@ -8,18 +8,18 @@ class Schema extends Base
     protected static $name = 'Schema';
 
     protected $fields = [
-        'allOf' => [
+        'allOf'      => [
             Base::KEY_TYPE      => Base::TYPE_ARRAY,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
             Base::KEY_ITEM_TYPE => AllOf::class,
         ],
-        'type' => [
+        'type'       => [
             Base::KEY_TYPE      => Base::TYPE_STRING,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
         ],
-        'required' => [
+        'required'   => [
             Base::KEY_TYPE      => Base::TYPE_ARRAY,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
@@ -30,6 +30,11 @@ class Schema extends Base
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
             Base::KEY_ITEM_TYPE => Property::class,
+        ],
+        '$ref'       => [
+            Base::KEY_TYPE      => Base::TYPE_STRING,
+            Base::KEY_REQUIRED  => false,
+            Base::KEY_IS_OBJECT => false,
         ],
     ];
 }
