@@ -57,7 +57,7 @@ class PathItem extends Base
         $methods = ['get', 'post', 'put', 'delete', 'options', 'head', 'patch'];
         foreach ($methods as $method) {
             if (array_key_exists($method, $this->data)) {
-                $ret[] = $this->data[$method];
+                $ret[$method] = $this->data[$method];
             }
         }
 
