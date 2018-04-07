@@ -49,6 +49,18 @@ class PathItem extends Base
             Base::KEY_IS_OBJECT => false,
             Base::KEY_ITEM_TYPE => Parameter::class,
         ],
-
     ];
+
+    public function getMethods()
+    {
+        $ret     = [];
+        $methods = ['get', 'post', 'put', 'delete', 'options', 'head', 'patch'];
+        foreach ($methods as $method) {
+            if (array_key_exists($method, $this->data)) {
+                $ret[] = $this->data[$method];
+            }
+        }
+
+        return $ret;
+    }
 }
