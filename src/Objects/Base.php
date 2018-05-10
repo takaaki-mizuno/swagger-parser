@@ -3,7 +3,7 @@ namespace TakaakiMizuno\SwaggerParser\Objects;
 
 use TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException;
 
-class Base
+class Base implements \Iterator
 {
     const KEY_TYPE      = 'type';
     const KEY_IS_OBJECT = 'isObject';
@@ -25,20 +25,24 @@ class Base
 
     protected $path = '';
 
+    private $enforceRequired = true;
+
     /**
      * Base constructor.
      *
      * @param array  $data
      * @param string $path
+     * @param bool   $enforceRequired
      *
      * @throws \TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException
      */
-    public function __construct(array $data, string $path)
+    public function __construct(array $data, string $path, bool $enforceRequired = true)
     {
         $this->path = $path;
+        $this->enforceRequired = $enforceRequired;
         foreach ($this->fields as $key => $info) {
             if (!array_key_exists($key, $data)) {
-                if ($info[self::KEY_REQUIRED]) {
+                if ($this->enforceRequired && $info[self::KEY_REQUIRED]) {
                     throw new InvalidFormatException($key.' is required ( '.$path.' )');
                 }
                 if (array_key_exists(self::KEY_DEFAULT, $info)) {
@@ -49,7 +53,7 @@ class Base
             }
             if (class_exists($info[self::KEY_TYPE])) {
                 $class            = $info[self::KEY_TYPE];
-                $this->data[$key] = new $class($data[$key], $path.'/'.$class::getName());
+                $this->data[$key] = new $class($data[$key], $path.'/'.$class::getName(), $this->enforceRequired);
             } else {
                 switch ($info[self::KEY_TYPE]) {
                     case self::TYPE_ARRAY:
@@ -80,7 +84,7 @@ class Base
     {
         $ret = [];
         foreach ($data as $key => $value) {
-            $item = class_exists($itemClass) ? new $itemClass($value, $path.'/'.$key) : $value;
+            $item = class_exists($itemClass) ? new $itemClass($value, $path.'/'.$key, $this->enforceRequired) : $value;
             if ($isHash) {
                 $ret[$key] = $item;
             } else {
@@ -118,5 +122,30 @@ class Base
     protected function validate($key, $value)
     {
         return true;
+    }
+
+    public function current()
+    {
+        return current($this->data);
+    }
+
+    public function next()
+    {
+        next($this->data);
+    }
+
+    public function key()
+    {
+        return key($this->data);
+    }
+
+    public function valid()
+    {
+        return null !== key($this->data);
+    }
+
+    public function rewind()
+    {
+        reset($this->data);
     }
 }

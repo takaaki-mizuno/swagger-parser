@@ -3,11 +3,19 @@ namespace TakaakiMizuno\SwaggerParser;
 
 use Symfony\Component\Yaml\Yaml;
 use TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException;
+use TakaakiMizuno\SwaggerParser\Objects\V20\Document as V20Document;
 
 class Parser
 {
     const FORMAT_YAML = 'yaml';
     const FORMAT_JSON = 'json';
+
+    private $enforceRequired = true;
+
+    public function __construct(bool $enforceRequired = true)
+    {
+        $this->enforceRequired = $enforceRequired;
+    }
 
     public function parse($data)
     {
@@ -25,7 +33,7 @@ class Parser
             $version = $this->detectOpenAPIVersion($rawData);
             switch ($version) {
                 case '20':
-                    return new \TakaakiMizuno\SwaggerParser\Objects\V20\Document($rawData, 'Document');
+                    return new V20Document($rawData, 'Document', $this->enforceRequired);
             }
         }
 
