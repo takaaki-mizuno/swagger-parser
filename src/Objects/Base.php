@@ -1,21 +1,22 @@
 <?php
+
 namespace TakaakiMizuno\SwaggerParser\Objects;
 
 use TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException;
 
 class Base
 {
-    const KEY_TYPE      = 'type';
-    const KEY_IS_OBJECT = 'isObject';
-    const KEY_REQUIRED  = 'required';
-    const KEY_DEFAULT   = 'default';
-    const KEY_ITEM_TYPE = 'itemType';
+    public const KEY_TYPE      = 'type';
+    public const KEY_IS_OBJECT = 'isObject';
+    public const KEY_REQUIRED  = 'required';
+    public const KEY_DEFAULT   = 'default';
+    public const KEY_ITEM_TYPE = 'itemType';
 
-    const TYPE_STRING  = 'string';
-    const TYPE_INTEGER = 'integer';
-    const TYPE_ARRAY   = 'array';
-    const TYPE_HASH    = 'hash';
-    const TYPE_BOOLEAN = 'boolean';
+    public const TYPE_STRING  = 'string';
+    public const TYPE_INTEGER = 'integer';
+    public const TYPE_ARRAY   = 'array';
+    public const TYPE_HASH    = 'hash';
+    public const TYPE_BOOLEAN = 'boolean';
 
     protected static $name = '';
 

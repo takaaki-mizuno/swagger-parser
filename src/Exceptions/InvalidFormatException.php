@@ -1,4 +1,5 @@
 <?php
+
 namespace TakaakiMizuno\SwaggerParser\Exceptions;
 
 class InvalidFormatException extends \Exception

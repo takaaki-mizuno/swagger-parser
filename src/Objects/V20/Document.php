@@ -1,4 +1,5 @@
 <?php
+
 namespace TakaakiMizuno\SwaggerParser\Objects\V20;
 
 use TakaakiMizuno\SwaggerParser\Objects\Base;
@@ -80,7 +81,7 @@ class Document extends Base
             Base::KEY_TYPE      => Base::TYPE_ARRAY,
             Base::KEY_REQUIRED  => false,
             Base::KEY_IS_OBJECT => false,
-            Base::KEY_ITEM_TYPE => Parameter::class,
+            Base::KEY_ITEM_TYPE => Tag::class,
         ],
         'externalDocs' => [
             Base::KEY_TYPE      => ExternalDocumentation::class,

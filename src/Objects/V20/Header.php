@@ -1,4 +1,5 @@
 <?php
+
 namespace TakaakiMizuno\SwaggerParser\Objects\V20;
 
 use TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException;

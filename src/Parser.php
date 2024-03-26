@@ -1,4 +1,5 @@
 <?php
+
 namespace TakaakiMizuno\SwaggerParser;
 
 use Symfony\Component\Yaml\Yaml;
@@ -6,8 +7,8 @@ use TakaakiMizuno\SwaggerParser\Exceptions\InvalidFormatException;
 
 class Parser
 {
-    const FORMAT_YAML = 'yaml';
-    const FORMAT_JSON = 'json';
+    public const FORMAT_YAML = 'yaml';
+    public const FORMAT_JSON = 'json';
 
     public function parse($data)
     {
